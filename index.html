@@ -272,7 +272,7 @@ a:hover, a:active {
                     currentChannel = {};  
                     const match = line.match(/channel-id="([^"]+)"\s+tvg-id="([^"]+)"\s+tvg-chno="([^"]+)"\s+tvg-name="([^"]+)"\s+tvg-logo="([^"]+)"\s+group-title="([^"]+)"\s*,(.+)/);   
                    if (match) {  
-                        currentChannel.name = match[4];  
+                        currentChannel.name = match[7];  
                         currentChannel.logo = match[5];  
                     }  
                 } else if (line.startsWith('#KODIPROP:inputstream.adaptive.license_key=')) {  
@@ -330,7 +330,7 @@ a:hover, a:active {
 tile.dataset.category = ch.category;
 
 
-tile.innerHTML = `<a href="https://tv4wap.github.io/p8?url=${ch.url}"><img src="${ch.logo}" alt="ch.name"><p>${ch.name}</p></a>`;
+tile.innerHTML = `<a href="https://tv4wap.github.io/p8?url=${ch.url}"><img src="${ch.logo}"><p>${ch.name}</p></a>`;
        
 tile.onclick = () => switchChannel(ch.url);
 
