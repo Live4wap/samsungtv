@@ -250,7 +250,7 @@ a:hover, a:active {
         // Fetch and parse M3U  
         async function fetchM3U() {  
             try {  
-                const response = await fetch('https://raw.githubusercontent.com/Shubhamkur/M3U/refs/heads/main/samsungtvplus.m3u');  
+                const response = await fetch('https://raw.githubusercontent.com/Shubhamkur/M3U/refs/heads/main/samsungiptv');  
                        
                 const m3uText = await response.text();  
                 return parseM3U(m3uText);  
@@ -270,10 +270,10 @@ a:hover, a:active {
                     continue;  
                 } else if (line.startsWith('#EXTINF:')) {  
                     currentChannel = {};  
-                    const match = line.match(/channel-id="([^"]+)"\s+tvg-id="([^"]+)"\s+tvg-chno="([^"]+)"\s+tvg-name=" ([^"]+)"\s+tvg-logo=""\s+group-title="([^"]+)"\s*,(.+)/);   
+                    const match = line.match(/channel-id="([^"]+)"\s+tvg-id="([^"]+)"\s+tvg-logo=""\s+group-title="([^"]+)"\s+tvg-chno="([^"]+)"\s*,(.+)/);   
                    if (match) {  
-                        currentChannel.name = match[4];  
-                        
+                        currentChannel.name = match[6];  
+currentChannel.logo = match[3];  
                     }  
                 } else if (line.startsWith('#KODIPROP:inputstream.adaptive.license_key=')) {  
                     const keyMatch = line.match(/license_key=([^:]+):(.+)/);  
@@ -330,7 +330,7 @@ a:hover, a:active {
 tile.dataset.category = ch.category;
 
 
-tile.innerHTML = `<a href="https://tv4wap.github.io/p1?url=${ch.url}"><img src="https://cdn6.aptoide.com/imgs/c/a/b/cab0d88d57e843799c494c7b762098c8_icon.png"><p>${ch.name}</p></a>`;
+tile.innerHTML = `<a href="https://tv4wap.github.io/p1?url=${ch.url}"><img src="${ch.logo}"><p>${ch.name}</p></a>`;
        
 tile.onclick = () => switchChannel(ch.url);
 
