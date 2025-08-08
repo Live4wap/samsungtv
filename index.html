@@ -270,7 +270,7 @@ a:hover, a:active {
                     continue;  
                 } else if (line.startsWith('#EXTINF:')) {  
                     currentChannel = {};  
-                    const match = line.match(/channel-id="([^"]+)"\s+tvg-id="([^"]+)"\s+tvg-logo=""\s+group-title="([^"]+)"\s+tvg-chno="([^"]+)"\s*,(.+)/);   
+                    const match = line.match(/channel-id="([^"]+)"\s+tvg-id="([^"]+)"\s+tvg-logo="([^"]+)"\s+group-title="([^"]+)"\s+tvg-chno="([^"]+)"\s*,(.+)/);   
                    if (match) {  
                         currentChannel.name = match[6];  
 currentChannel.logo = match[3];  
